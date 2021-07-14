@@ -7,8 +7,8 @@
 
 import UIKit
 import Combine
-
-class SearchTableViewController: UITableViewController  {
+import MBProgressHUD
+class SearchTableViewController: UITableViewController, UIAnimatable  {
     //call the api service
     private let apiService = APIService()
     //create subscribers to receive info from publisher
@@ -16,6 +16,14 @@ class SearchTableViewController: UITableViewController  {
     //create searchController and add published in order to track the changes in searchQuery
     @Published private var searchQuery = String()
     private var searchResults : SearchResults?
+    //creating enum to decide which mode the UI should be in
+    private enum Mode{
+        case onboarding
+        case search
+    }
+    //add published keyword in order to observe the mode
+    @Published private var mode : Mode = .onboarding
+    
     private lazy var searchController : UISearchController = {
         let sc = UISearchController(searchResultsController: nil)
         sc.searchResultsUpdater = self
@@ -25,17 +33,20 @@ class SearchTableViewController: UITableViewController  {
         sc.searchBar.autocapitalizationType = .allCharacters
         return sc
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //setting up navigation bar
         setupNavigationBar()
         observeForm()
+        setupTableView()
     }
     private func observeForm(){
         //function to observe the search query
         $searchQuery.debounce(for: .milliseconds(750), scheduler: RunLoop.main).sink(receiveValue: {[unowned self](searchQuery) in
+            showLoadingAnimation()
             self.apiService.fetchSymbolsPublisher(keywords: searchQuery).sink(receiveCompletion: {(completion) in
+                hideLoadingAnimation()
                 //handle completion
                 switch completion{
                 //
@@ -51,14 +62,21 @@ class SearchTableViewController: UITableViewController  {
                 //store in subscribers
             }).store(in: &self.subscribers)
         }).store(in: &subscribers)
+        $mode.sink{[unowned self](mode) in
+            switch mode{
+            case .onboarding:
+                self.tableView.backgroundView = SearchPlaceholderView()
+            case .search:
+                self.tableView.backgroundView = nil
+            }
+        }.store(in: &subscribers)
     }
     private func setupNavigationBar(){
         navigationItem.searchController = searchController
+        navigationItem.title = "Search"
     }
-    private func performSearch(){
-        //function in order to return from get request
-        
-        
+    private func setupTableView(){
+        tableView.tableFooterView = UIView()
     }
     //return number of row in tableview
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -75,7 +93,7 @@ class SearchTableViewController: UITableViewController  {
         }
         return cell
     }
-
+    
 }
 //add extension in order to conform to the searchResultUpdater and deleate
 extension SearchTableViewController: UISearchResultsUpdating, UISearchControllerDelegate{
@@ -87,6 +105,9 @@ extension SearchTableViewController: UISearchResultsUpdating, UISearchController
         self.searchQuery = searchQuery
         
         
+    }
+    func willPresentSearchController(_ searchController: UISearchController) {
+        mode = .search
     }
     
     
