@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0CF017EE533974E4DD3E777F /* Pods_dca_calculator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B660E63CF56EC32B428DD4E /* Pods_dca_calculator.framework */; };
+		700F671626A7613700D1D79C /* CalculatorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700F671526A7613700D1D79C /* CalculatorTableViewController.swift */; };
+		700F671826A761FB00D1D79C /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700F671726A761FB00D1D79C /* Asset.swift */; };
 		70281A9E269CBF90006419D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70281A9D269CBF90006419D9 /* AppDelegate.swift */; };
 		70281AA0269CBF90006419D9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70281A9F269CBF90006419D9 /* SceneDelegate.swift */; };
 		70281AA2269CBF90006419D9 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70281AA1269CBF90006419D9 /* SearchTableViewController.swift */; };
@@ -17,6 +19,7 @@
 		70281AB4269CE089006419D9 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70281AB3269CE089006419D9 /* SearchTableViewCell.swift */; };
 		709CFD2B269E1B3700CA9DD5 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709CFD2A269E1B3700CA9DD5 /* APIService.swift */; };
 		709CFD2E269E1ED600CA9DD5 /* SearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709CFD2D269E1ED600CA9DD5 /* SearchResults.swift */; };
+		70C674DA26A46F8900AF1B27 /* TimeSeriesMonthlyAdjusted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C674D926A46F8900AF1B27 /* TimeSeriesMonthlyAdjusted.swift */; };
 		70D26159269F6CF300894FC2 /* SearchPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D26158269F6CF300894FC2 /* SearchPlaceholderView.swift */; };
 		70D26160269F7D1A00894FC2 /* UIAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D2615F269F7D1A00894FC2 /* UIAnimatable.swift */; };
 /* End PBXBuildFile section */
@@ -24,6 +27,8 @@
 /* Begin PBXFileReference section */
 		4B660E63CF56EC32B428DD4E /* Pods_dca_calculator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_dca_calculator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		537FBFAE83481916BBC27A89 /* Pods-dca-calculator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dca-calculator.debug.xcconfig"; path = "Target Support Files/Pods-dca-calculator/Pods-dca-calculator.debug.xcconfig"; sourceTree = "<group>"; };
+		700F671526A7613700D1D79C /* CalculatorTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorTableViewController.swift; sourceTree = "<group>"; };
+		700F671726A761FB00D1D79C /* Asset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
 		70281A9A269CBF90006419D9 /* dca-calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "dca-calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		70281A9D269CBF90006419D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		70281A9F269CBF90006419D9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -35,6 +40,7 @@
 		70281AB3269CE089006419D9 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		709CFD2A269E1B3700CA9DD5 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		709CFD2D269E1ED600CA9DD5 /* SearchResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResults.swift; sourceTree = "<group>"; };
+		70C674D926A46F8900AF1B27 /* TimeSeriesMonthlyAdjusted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSeriesMonthlyAdjusted.swift; sourceTree = "<group>"; };
 		70D26158269F6CF300894FC2 /* SearchPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlaceholderView.swift; sourceTree = "<group>"; };
 		70D2615F269F7D1A00894FC2 /* UIAnimatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAnimatable.swift; sourceTree = "<group>"; };
 		7FBE3E44BB7C2370499B6795 /* Pods-dca-calculator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dca-calculator.release.xcconfig"; path = "Target Support Files/Pods-dca-calculator/Pods-dca-calculator.release.xcconfig"; sourceTree = "<group>"; };
@@ -109,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				70281AA1269CBF90006419D9 /* SearchTableViewController.swift */,
+				700F671526A7613700D1D79C /* CalculatorTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -125,6 +132,8 @@
 			isa = PBXGroup;
 			children = (
 				709CFD2D269E1ED600CA9DD5 /* SearchResults.swift */,
+				70C674D926A46F8900AF1B27 /* TimeSeriesMonthlyAdjusted.swift */,
+				700F671726A761FB00D1D79C /* Asset.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -263,8 +272,11 @@
 				70281AA2269CBF90006419D9 /* SearchTableViewController.swift in Sources */,
 				70D26160269F7D1A00894FC2 /* UIAnimatable.swift in Sources */,
 				709CFD2B269E1B3700CA9DD5 /* APIService.swift in Sources */,
+				700F671826A761FB00D1D79C /* Asset.swift in Sources */,
+				700F671626A7613700D1D79C /* CalculatorTableViewController.swift in Sources */,
 				70281AB4269CE089006419D9 /* SearchTableViewCell.swift in Sources */,
 				70281A9E269CBF90006419D9 /* AppDelegate.swift in Sources */,
+				70C674DA26A46F8900AF1B27 /* TimeSeriesMonthlyAdjusted.swift in Sources */,
 				709CFD2E269E1ED600CA9DD5 /* SearchResults.swift in Sources */,
 				70281AA0269CBF90006419D9 /* SceneDelegate.swift in Sources */,
 				70D26159269F6CF300894FC2 /* SearchPlaceholderView.swift in Sources */,

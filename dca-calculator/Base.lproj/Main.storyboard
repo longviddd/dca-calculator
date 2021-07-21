@@ -91,10 +91,10 @@
             </objects>
             <point key="canvasLocation" x="800.00000000000011" y="89.732142857142847"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Calculator Table View Controller-->
         <scene sceneID="hVs-mp-QnA">
             <objects>
-                <tableViewController id="S1W-DW-hgP" sceneMemberID="viewController">
+                <tableViewController id="S1W-DW-hgP" customClass="CalculatorTableViewController" customModule="dca_calculator" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="w4w-S3-cak">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

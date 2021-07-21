@@ -97,7 +97,34 @@ class SearchTableViewController: UITableViewController, UIAnimatable  {
         return cell
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showCalculator", sender: nil)
+        //get the symbol the user selected in the items array
+        if let searchResults = self.searchResults{
+            let symbol = searchResults.items[indexPath.item].symbol
+            //pass the info into the handleSelection function
+            handleSelection(for: symbol , searchResult: searchResults.items[indexPath.item])
+        }
+        
+    }
+    private func handleSelection(for symbol: String, searchResult : SearchResult){
+        //function to get the TimeSeriesMonthlyAdjusted for the symbol the user chose and pass it into the next segue
+        apiService.fetchTimeSeriesMonthlyAdjustedPublisher(keywords: symbol).sink{(completionResult) in
+            switch completionResult{
+            
+            case .finished:
+                break
+            case .failure(let error):
+                print(error)
+            }
+        }receiveValue: { [weak self](timeSeriesMonthlyAdjusted) in
+            let asset = Asset(searchResult: searchResult, timeSeriesMonthlyAdjusted: timeSeriesMonthlyAdjusted)
+            self?.performSegue(withIdentifier: "showCalculator", sender: asset)
+            print("Success: \(timeSeriesMonthlyAdjusted.getMonthInfos())")
+        }.store(in: &subscribers)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        if segue.identifier == "showCalculator", let destination = segue.destination as? CalculatorTableViewController, let asset = sender as? Asset{
+            
+        }
     }
     
 }
