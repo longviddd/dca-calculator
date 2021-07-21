@@ -107,7 +107,9 @@ class SearchTableViewController: UITableViewController, UIAnimatable  {
     }
     private func handleSelection(for symbol: String, searchResult : SearchResult){
         //function to get the TimeSeriesMonthlyAdjusted for the symbol the user chose and pass it into the next segue
-        apiService.fetchTimeSeriesMonthlyAdjustedPublisher(keywords: symbol).sink{(completionResult) in
+        showLoadingAnimation()
+        apiService.fetchTimeSeriesMonthlyAdjustedPublisher(keywords: symbol).sink{[weak self](completionResult) in
+            self?.hideLoadingAnimation()
             switch completionResult{
             
             case .finished:
@@ -116,6 +118,7 @@ class SearchTableViewController: UITableViewController, UIAnimatable  {
                 print(error)
             }
         }receiveValue: { [weak self](timeSeriesMonthlyAdjusted) in
+            self?.hideLoadingAnimation()
             let asset = Asset(searchResult: searchResult, timeSeriesMonthlyAdjusted: timeSeriesMonthlyAdjusted)
             self?.performSegue(withIdentifier: "showCalculator", sender: asset)
             print("Success: \(timeSeriesMonthlyAdjusted.getMonthInfos())")
@@ -123,7 +126,7 @@ class SearchTableViewController: UITableViewController, UIAnimatable  {
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         if segue.identifier == "showCalculator", let destination = segue.destination as? CalculatorTableViewController, let asset = sender as? Asset{
-            
+            destination.asset = asset
         }
     }
     
